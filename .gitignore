@@ -1,0 +1,6 @@
+.vs/
+binary/
+Thumbs.db
+todo.txt
+*.sublime-workspace
+*.res
