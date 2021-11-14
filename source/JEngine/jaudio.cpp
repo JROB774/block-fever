@@ -1,6 +1,6 @@
 /// <J_MIXER> /////////////////////////////////////////////////////////////////
 
-const std::string J_Mixer::AUDIO_FILE = "Resources\\Data\\Audio.dat";
+const std::string J_Mixer::AUDIO_FILE = RES_DIR_DATA "Audio.dat";
 int J_Mixer::maxChannels = 0;
 float J_Mixer::soundVolume = 0.0;
 float J_Mixer::volumePiece = 0.0;
@@ -54,7 +54,7 @@ void J_Mixer::handle (const SDL_Event& arg_event) {
 J_Sound J_Mixer::createSound (const std::string arg_file) {
 
     // Create the directory to wherer the sound file is located.
-    std::string directory = "Resources\\Sounds\\" + arg_file + ".wav";
+    std::string directory = RES_DIR_SOUNDS + arg_file + ".wav";
 
     // Load the file into the sound's chunk.
     J_Sound sound;

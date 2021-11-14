@@ -1,6 +1,6 @@
 /// <J_WINDOW> ////////////////////////////////////////////////////////////////
 
-const std::string J_Window::WINDOW_FILE = "Resources\\Data\\Window.dat";
+const std::string J_Window::WINDOW_FILE = RES_DIR_DATA "Window.dat";
 std::string J_Window::title = "\0";
 int J_Window::width = 0, J_Window::height = 0;
 int J_Window::screenWidth = 0, J_Window::screenHeight = 0;

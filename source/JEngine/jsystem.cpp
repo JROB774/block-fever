@@ -1,7 +1,7 @@
 /// <J_SYSTEM> ////////////////////////////////////////////////////////////////
 
-const std::string J_System::SYSTEM_FILE = "Resources\\Data\\System.dat";
-const std::string J_System::CONFIG_FILE = "Resources\\Data\\Config.dat";
+const std::string J_System::SYSTEM_FILE = RES_DIR_DATA "System.dat";
+const std::string J_System::CONFIG_FILE = RES_DIR_DATA "Config.dat";
 SDL_Event J_System::event;
 J_Timer J_System::fpsTimer, J_System::capTimer;
 int J_System::fps = 0, J_System::tpf = 0;

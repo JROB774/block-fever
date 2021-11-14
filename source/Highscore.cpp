@@ -1,4 +1,4 @@
-const std::string Highscore::HIGHSCORE_FILE = "Resources\\Data\\Highscores.dat";
+const std::string Highscore::HIGHSCORE_FILE = RES_DIR_DATA "Highscores.dat";
 
 
 

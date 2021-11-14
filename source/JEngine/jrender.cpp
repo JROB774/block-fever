@@ -130,7 +130,7 @@ J_Image J_Renderer::createImage (const std::string arg_file) {
 
     /*
     // Load the PNG file into a surface.
-    std::string directory = "Resources\\Images\\" + arg_file + ".png";
+    std::string directory = RES_DIR_IMAGES + arg_file + ".png";
     SDL_Surface* surface = IMG_Load(directory.c_str());
     if (surface == nullptr) { J_Error::log("J_ERROR_RENDERER_IMAGE_SURFACE_LOAD"); }
 
@@ -211,7 +211,7 @@ void J_Renderer::destroyImage (J_Image* arg_image) {
 J_Animation J_Renderer::createAnimation (const std::string arg_file) {
 
     // Read the animation file and store all the data.
-    std::string directory = "Resources\\Animations\\" + arg_file + ".anim";
+    std::string directory = RES_DIR_ANIMATIONS + arg_file + ".anim";
     std::ifstream animationFile(directory, std::ifstream::in);
     std::string rawData = "\0";
 
@@ -394,7 +394,7 @@ void J_Renderer::destroyAnimation (J_Animation* arg_animation) {
 J_Background J_Renderer::createBackground (const std::string arg_file) {
 
     // Read the background file and store all the data.
-    std::string directory = "Resources\\Backgrounds\\" + arg_file + ".bg";
+    std::string directory = RES_DIR_BACKGROUNDS + arg_file + ".bg";
     std::ifstream backgroundFile(directory, std::ifstream::in);
     std::string rawData = "\0";
 
@@ -514,7 +514,7 @@ void J_Renderer::destroyBackground (J_Background* arg_background) {
 J_Font J_Renderer::createFont (const std::string arg_file)  {
 
     // Read the font file and store all the data.
-    std::string directory = "Resources\\Fonts\\" + arg_file + ".font";
+    std::string directory = RES_DIR_FONTS + arg_file + ".font";
     std::ifstream fontFile(directory, std::ifstream::in);
     std::string rawData = "\0";
 

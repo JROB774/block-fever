@@ -1,6 +1,6 @@
 /// <J_ERROR> /////////////////////////////////////////////////////////////////
 
-const std::string J_Error::ERROR_FILE = "Resources\\Data\\Error.dat";
+const std::string J_Error::ERROR_FILE = RES_DIR_DATA "Error.dat";
 const std::string J_Error::ERROR_LOG = "Error.log";
 int J_Error::total = 0;
 std::unordered_map <std::string, std::string> J_Error::error;

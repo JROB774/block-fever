@@ -24,6 +24,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
+#include "Resources/Resources.h"
+
 #include "JEngine/jrender.h"
 #include "JEngine/jtime.h"
 #include "JEngine/jerror.h"
