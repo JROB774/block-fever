@@ -1,8 +1,6 @@
 #ifndef INCLUDE_BUTTON
 #define INCLUDE_BUTTON
 
-#include "Cursor.h"
-
 class Button
 {
     // GameOver has access to private members.

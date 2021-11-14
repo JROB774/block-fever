@@ -1,12 +1,6 @@
 #ifndef INCLUDE_J_SYSTEM
 #define INCLUDE_J_SYSTEM
 
-#include "jtime.h"
-#include "jrender.h"
-#include "jwindow.h"
-#include "jcollision.h"
-#include "jaudio.h"
-
 /// <J_SYSTEM> ////////////////////////////////////////////////////////////////
 
 /// DESCRIPTION:

@@ -1,5 +1,3 @@
-#include "Block.h"
-
 /// <BLOCK> ///////////////////////////////////////////////////////////////////
 
 const int Block::WIDTH = 32, Block::HEIGHT = 32;

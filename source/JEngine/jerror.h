@@ -1,16 +1,6 @@
 #ifndef INCLUDE_J_ERROR
 #define INCLUDE_J_ERROR
 
-#include <cstring>
-#include <cstdlib>
-#include <string>
-#include <fstream>
-#include <unordered_map>
-#include <windows.h>
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
-
 /// <J_ERROR> /////////////////////////////////////////////////////////////////
 
 class J_Error

@@ -1,5 +1,3 @@
-#include "GameOver.h"
-
 /// <GAME_OVER> ///////////////////////////////////////////////////////////////
 
 J_Quad GameOver::darkness;
@@ -162,7 +160,7 @@ void GameOver::step (void) {
 
     // Handle the title's step.
     Title::step();
-;
+
     // Countdown the blocks saved counter if everything has landed.
     if (BigBlock::hasLanded() && (Title::hasLanded())) {
 

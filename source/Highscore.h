@@ -1,8 +1,6 @@
 #ifndef INCLUDE_HIGHSCORE
 #define INCLUDE_HIGHSCORE
 
-#include "jsystem.h"
-
 class Highscore
 {
     public:

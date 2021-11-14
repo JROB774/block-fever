@@ -1,8 +1,6 @@
 #ifndef INCLUDE_PAUSE
 #define INCLUDE_PAUSE
 
-#include "Button.h"
-
 /// <PAUSE> ///////////////////////////////////////////////////////////////////
 
 class Pause

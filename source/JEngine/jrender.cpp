@@ -1,5 +1,3 @@
-#include "jrender.h"
-
 /// <J_COLOUR> ////////////////////////////////////////////////////////////////
 
 bool operator== (const J_Colour& arg_lhs, const J_Colour& arg_rhs) { return ((arg_lhs.red == arg_rhs.red) && (arg_lhs.green == arg_rhs.green) && (arg_lhs.blue == arg_rhs.blue) && (arg_lhs.alpha == arg_rhs.alpha) && (arg_lhs.blendmode == arg_rhs.blendmode)) ? true : false; }
@@ -128,13 +126,15 @@ void J_Renderer::drawQuadFilled (const J_Quad& arg_quad) {
 
 J_Image J_Renderer::createImage (const std::string arg_file) {
 
+    J_Image image;
+
+    /*
     // Load the PNG file into a surface.
     std::string directory = "Resources\\Images\\" + arg_file + ".png";
     SDL_Surface* surface = IMG_Load(directory.c_str());
     if (surface == nullptr) { J_Error::log("J_ERROR_RENDERER_IMAGE_SURFACE_LOAD"); }
 
     // Create the texture from a surface.
-    J_Image image;
     image.texture = SDL_CreateTextureFromSurface(renderer, surface);
     if (image.texture == nullptr) { J_Error::log("J_ERROR_RENDERER_IMAGE_TEXTURE_CREATE"); }
 
@@ -144,6 +144,7 @@ J_Image J_Renderer::createImage (const std::string arg_file) {
     // Free the temporary surface
     SDL_FreeSurface(surface);
     surface = nullptr;
+    */
 
     // Return the image.
     return image;

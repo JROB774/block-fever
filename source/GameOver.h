@@ -1,9 +1,6 @@
 #ifndef INCLUDE_GAME_OVER
 #define INCLUDE_GAME_OVER
 
-#include "Button.h"
-#include "Highscore.h"
-
 /// <GAME_OVER> ///////////////////////////////////////////////////////////////
 
 class GameOver

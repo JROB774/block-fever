@@ -1,8 +1,6 @@
 #ifndef INCLUDE_J_TIME
 #define INCLUDE_J_TIME
 
-#include "jerror.h"
-
 /// <J_TIMER> /////////////////////////////////////////////////////////////////
 
 class J_Timer

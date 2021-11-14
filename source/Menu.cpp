@@ -1,5 +1,3 @@
-#include "Menu.h"
-
 /// <BUTTON> //////////////////////////////////////////////////////////////////
 
 const int BigButton::WIDTH = 112, BigButton::HEIGHT = 112;
@@ -69,8 +67,6 @@ void BigButton::handle (void (*arg_process) (void)) {
         if (J_Collision::handleCollision(Cursor::getX(), Cursor::getY(), collider)) {
 
             switch (type) {
-
-                // case (TYPE_EXIT) : { J_Mixer::playSound(clickExit, 0); break; }
 
                 case (TYPE_PLAY) : { J_Mixer::playSound(clickPlay, 0); break; }
 
@@ -269,8 +265,6 @@ void Menu::handle (void) {
 
                 button[BigButton::TYPE_EXIT].handle(&exit);
                 button[BigButton::TYPE_PLAY].handle(&play);
-                // button[BigButton::TYPE_CONFIG].handle(&config);
-                // button[BigButton::TYPE_HIGHSCORE].handle(&highscore);
             }
         }
 

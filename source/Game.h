@@ -1,10 +1,6 @@
 #ifndef INCLUDE_GAME
 #define INCLUDE_GAME
 
-#include <ctime>
-#include "Stage.h"
-#include "Menu.h"
-
 /// <GAME> ////////////////////////////////////////////////////////////////////
 
 class Game

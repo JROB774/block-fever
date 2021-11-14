@@ -1,4 +1,4 @@
-#include "Button.h"
+/// <BUTTON> //////////////////////////////////////////////////////////////////
 
 const int Button::WIDTH = 40, Button::HEIGHT = 40;
 const int Button::ENDING_Y = 480 - (86 + 15);
@@ -146,3 +146,5 @@ void Button::destroy (void) {
 }
 
 Button::~Button (void) { destroy(); }
+
+/// </BUTTON> /////////////////////////////////////////////////////////////////

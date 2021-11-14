@@ -1,5 +1,3 @@
-#include "Highscore.h"
-
 const std::string Highscore::HIGHSCORE_FILE = "Resources\\Data\\Highscores.dat";
 
 

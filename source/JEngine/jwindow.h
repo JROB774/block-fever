@@ -1,10 +1,6 @@
 #ifndef INCLUDE_J_WINDOW
 #define INCLUDE_J_WINDOW
 
-#include <sstream>
-#include <iostream>
-#include "jrender.h"
-
 /// <J_WINDOW> ////////////////////////////////////////////////////////////////
 
 class J_Window
@@ -37,14 +33,6 @@ class J_Window
         // The event handler.
         //
         static void handle(const SDL_Event&, const bool);
-
-        /// DESCRIPTION:
-        // Set the window's icon.
-        //
-        /// ARGUMENTS:
-        // The window icon file.
-        //
-        static void setIcon(const std::string);
 
         /// DESCRIPTION:
         // Set the screen scale to the specified value.

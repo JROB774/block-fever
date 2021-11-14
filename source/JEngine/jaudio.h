@@ -1,9 +1,6 @@
 #ifndef INCLUDE_J_AUDIO
 #define INCLUDE_J_AUDIO
 
-#include <sstream>
-#include "jerror.h"
-
 /// <J_SOUND> /////////////////////////////////////////////////////////////////
 
 struct J_Sound

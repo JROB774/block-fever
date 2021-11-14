@@ -1,9 +1,6 @@
 #ifndef INCLUDE_MENU
 #define INCLUDE_MENU
 
-#include "jsystem.h"
-#include "Cursor.h"
-
 /// <BUTTON> //////////////////////////////////////////////////////////////////
 
 class BigButton

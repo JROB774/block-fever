@@ -1,5 +1,3 @@
-#include "jcollision.h"
-
 /// <J_COLLIDER> //////////////////////////////////////////////////////////////
 
 bool operator== (const J_Collider& arg_lhs, const J_Collider& arg_rhs) { return arg_lhs.quad == arg_rhs.quad; }

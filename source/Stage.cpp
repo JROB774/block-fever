@@ -1,5 +1,3 @@
-#include "Stage.h"
-
 /// <STAGE> ///////////////////////////////////////////////////////////////////
 
 const int Stage::BLOCK_ARRAY_WIDTH = 15, Stage::BLOCK_ARRAY_HEIGHT = 15;
@@ -40,42 +38,6 @@ void Stage::initialise (void) {
             * BLOCK_ARRAY_HEIGHT + x].create((x * Block::getWidth()), (y * Block::getHeight()));
         }
     }
-
-    // Print the blocks' current state to the console as text.
-    /*
-    if (J_System::isDebug()) {
-
-        for (int y = 0; y < BLOCK_ARRAY_HEIGHT; ++y) {
-
-            for (int x = 0; x < BLOCK_ARRAY_WIDTH; ++x) {
-
-                printf("%d ", block[y * BLOCK_ARRAY_HEIGHT + x].getState());
-            }
-
-            printf("\n");
-        }
-
-        printf("\n");
-    }
-    */
-
-    // Print the blocks' indexes to the console as text.
-    /*
-    if (J_System::isDebug()) {
-
-        for (int y = 0; y < BLOCK_ARRAY_HEIGHT; ++y) {
-
-            for (int x = 0; x < BLOCK_ARRAY_WIDTH; ++x) {
-
-                printf("%d ", y * BLOCK_ARRAY_HEIGHT + x);
-            }
-
-            printf("\n");
-        }
-
-        printf("\n");
-    }
-    */
 
     // Load and create the stage media.
     sidebar = J_Renderer::createImage("Sidebar");
@@ -190,19 +152,6 @@ void Stage::generate (void) {
 
         while (sicknessTrail > 0) {
 
-            /*
-            if (sicknessTrail == STARTING_SICKNESS) {
-
-                switch (rand() % 4) {
-
-                    case (0) : { --yyy; break; }
-                    case (1) : { ++xxx; break; }
-                    case (2) : { ++yyy; break; }
-                    case (3) : { --xxx; break; }
-                }
-            }
-            */
-
             // Select a direction to move.
             prevDirection = direction;
             while (direction == prevDirection) { direction = rand() % 4; }
@@ -276,9 +225,6 @@ void Stage::generate (void) {
                     break;
                 }
             }
-
-            // Decrement the sickness trail.
-            // --sicknessTrail;
         }
     }
 
@@ -410,20 +356,6 @@ void Stage::handle (void) {
         }
     }
 
-    // Exit the game if the escape key is pressed (paused or not).
-    /*
-    if (state != STATE_INACTIVE) {
-
-        if (J_System::getEvent().type == SDL_KEYDOWN )  {
-
-            if (J_System::getEvent().key.keysym.sym == SDLK_ESCAPE) {
-
-                J_System::exit();
-            }
-        }
-    }
-    */
-
     // Debug Commands
     if (J_System::isDebug()) {
 
@@ -553,13 +485,11 @@ void Stage::step (void) {
 
                     convertToSickCounter = 5;
                     --burstCounter;
-                    // if (J_System::isDebug()) { printf("Sick Counter: %d\n", convertToSickCounter); }
                 }
                 else {
 
                     convertToSickCounter = (rand() % MAX_CONVERT_TO_SICK_TIME + MIN_CONVERT_TO_SICK_TIME) - ((0.35 * (sickTotal + corruptTotal)) + (0.0003 * stageTime));
                     if (convertToSickCounter < 0 ) { convertToSickCounter = 0; }
-                    // if (J_System::isDebug()) { printf("Sick Counter: %d\n", convertToSickCounter); }
                 }
             }
         }
@@ -634,7 +564,6 @@ void Stage::step (void) {
             // Reset the conversion counter.
             convertToCorruptCounter = (rand() % MAX_CONVERT_TO_CORRUPT_TIME + MIN_CONVERT_TO_CORRUPT_TIME) - ((0.15 * (sickTotal + corruptTotal)) + (0.0003 * stageTime));
             if (convertToCorruptCounter < 0 ) { convertToCorruptCounter = 0; }
-            // if (J_System::isDebug()) { printf("Corrupt Counter: %d\n", convertToCorruptCounter); }
         }
         else { --convertToCorruptCounter; }
 
@@ -923,9 +852,6 @@ void Stage::render (void) {
 
     // Render the fade out or in.
     J_Renderer::drawQuadFilled(fade);
-
-    // TEMP
-    // printf("Sick: %d\nCorrupt: %d\n", convertToSickCounter, convertToCorruptCounter);
 }
 
 

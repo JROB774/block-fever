@@ -1,5 +1,3 @@
-#include "jwindow.h"
-
 /// <J_WINDOW> ////////////////////////////////////////////////////////////////
 
 const std::string J_Window::WINDOW_FILE = "Resources\\Data\\Window.dat";
@@ -103,21 +101,6 @@ void J_Window::handle (const SDL_Event& arg_event, const bool arg_debug) {
 
 
 
-void J_Window::setIcon (const std::string arg_file) {
-
-    std::string directory = "Resources\\" + arg_file + ".png";
-
-    SDL_Surface* icon = IMG_Load(directory.c_str());
-    if (icon == nullptr){ J_Error::log("GAME_ERROR_WINDOW_SET_ICON"); }
-
-    SDL_SetWindowIcon(window, icon);
-
-    SDL_FreeSurface(icon);
-    icon = nullptr;
-}
-
-
-
 void J_Window::setScreenScale (const int arg_scale) {
 
     // Set the new screen scale.
@@ -143,41 +126,6 @@ void J_Window::setScreenScale (const int arg_scale) {
     // Update the viewport.
     updateViewport();
 }
-
-
-
-/*
-void J_Window::increaseScreenScale (void) {
-
-    // Increase the screen scale.
-    ++screenScale;
-    if (((screenWidth * screenScale) > desktopWidth) || ((screenHeight * screenScale) > desktopHeight)) { --screenScale; }
-
-    if (!fullscreen) {
-
-        if (((screenWidth * screenScale) > width) || ((screenHeight * screenScale) > height)) {
-
-            width = screenWidth * screenScale, height = screenHeight * screenScale;
-            SDL_SetWindowSize(window, width, height);
-        }
-    }
-
-    J_Renderer::setScale(static_cast <float> (screenScale), static_cast <float> (screenScale));
-
-    updateViewport();
-}
-
-void J_Window::decreaseScreenScale (void) {
-
-    // Decrease the screen scale.
-    --screenScale;
-    if (screenScale < 1) { screenScale = 1; }
-
-    J_Renderer::setScale(static_cast <float> (screenScale), static_cast <float> (screenScale));
-
-    updateViewport();
-}
-*/
 
 
 

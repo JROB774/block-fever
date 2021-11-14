@@ -1,8 +1,6 @@
 #ifndef INCLUDE_BLOCK
 #define INCLUDE_BLOCK
 
-#include "jsystem.h"
-
 /// <BLOCK> ///////////////////////////////////////////////////////////////////
 
 class Block

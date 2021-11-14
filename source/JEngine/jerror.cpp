@@ -1,5 +1,3 @@
-#include "jerror.h"
-
 /// <J_ERROR> /////////////////////////////////////////////////////////////////
 
 const std::string J_Error::ERROR_FILE = "Resources\\Data\\Error.dat";
@@ -112,7 +110,6 @@ void J_Error::log (const std::string arg_key) {
         switch (type) {
 
             case (J_ERROR_TYPE_SDL) : { errorLog << " (" << SDL_GetError() << ")"; break; }
-            case (J_ERROR_TYPE_IMG) : { errorLog << " (" << IMG_GetError() << ")"; break; }
             case (J_ERROR_TYPE_MIX) : { errorLog << " (" << Mix_GetError() << ")"; break; }
         }
 
@@ -123,7 +120,7 @@ void J_Error::log (const std::string arg_key) {
 
 
     // Display an error message box and terminate with a failure state.
-    MessageBox(nullptr, "An error has occured!\nCheck the 'Error.log' for more details.", "J-Engine Error", MB_OK);
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "J-Engine Error", "An error has occured!\nCheck the 'Error.log' for more details.", J_Window::getWindow());
     exit(EXIT_FAILURE);
 }
 
@@ -140,13 +137,13 @@ void J_Error::terminate (void) {
 
 inline void J_Error::initialiseError (void) {
 
-    MessageBox(nullptr, "Could not initialise the J_Error sub-system!", "J-Engine Error", MB_OK);
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "J-Engine Error", "Could not initialise the J_Error sub-system!", J_Window::getWindow());
     exit(EXIT_FAILURE);
 }
 
 inline void J_Error::logError (void) {
 
-    MessageBox(nullptr, "Could not log an error to the error log!", "J-Engine Error", MB_OK);
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "J-Engine Error", "Could not log an error to the error log!", J_Window::getWindow());
     exit(EXIT_FAILURE);
 }
 

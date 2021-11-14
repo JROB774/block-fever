@@ -1,8 +1,6 @@
 #ifndef INCLUDE_CURSOR
 #define INCLUDE_CURSOR
 
-#include "jsystem.h"
-
 /// <CURSOR> //////////////////////////////////////////////////////////////////
 
 class Cursor

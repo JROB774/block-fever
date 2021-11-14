@@ -1,37 +1,20 @@
-#include <iostream>
-#include "Game.h"
+#include "Main.h"
 
-int main (int argc, char* argv[]) {
+#include "JEngine/jrender.cpp"
+#include "JEngine/jtime.cpp"
+#include "JEngine/jerror.cpp"
+#include "JEngine/jcollision.cpp"
+#include "JEngine/jwindow.cpp"
+#include "JEngine/jaudio.cpp"
+#include "JEngine/jsystem.cpp"
 
-    while (true) {
-
-        J_System::initialise();
-        Game::initialise();
-        J_System::getFpsTimer()->start();
-
-        while (J_System::getState() == J_SYSTEM_STATE_ACTIVE) {
-
-            J_System::getCapTimer()->start();
-
-            while (J_System::pollEvent() != 0) {
-
-                J_System::handle();
-                Game::handle();
-            }
-
-            J_System::stepBegin();
-            Game::step();
-            Game::render();
-            J_System::stepEnd();
-        }
-
-        Game::terminate();
-        J_System::terminate();
-
-        if (J_System::getState() == J_SYSTEM_STATE_RESETTING) { continue; }
-        else { break; }
-    }
-
-    if (J_System::isDebug()) { std::cin.get(); }
-    return 0;
-}
+#include "Button.cpp"
+#include "Pause.cpp"
+#include "Block.cpp"
+#include "Cursor.cpp"
+#include "Highscore.cpp"
+#include "Game.cpp"
+#include "GameOver.cpp"
+#include "Menu.cpp"
+#include "Stage.cpp"
+#include "Platform.cpp"

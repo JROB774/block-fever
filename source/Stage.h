@@ -1,10 +1,6 @@
 #ifndef INCLUDE_STAGE
 #define INCLUDE_STAGE
 
-#include "Block.h"
-#include "GameOver.h"
-#include "Pause.h"
-
 /// <STAGE> ///////////////////////////////////////////////////////////////////
 
 class Stage
