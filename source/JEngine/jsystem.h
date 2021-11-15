@@ -75,22 +75,6 @@ class J_System
         static SDL_Event getEvent(void);
 
         /// DESCRIPTION:
-        // Get the FPS timer for the main loop.
-        //
-        /// RETURN VALUES:
-        // A pointer to the FPS timer.
-        //
-        static J_Timer* getFpsTimer(void);
-
-        /// DESCRIPTION:
-        // Get the cap timer for the main loop.
-        //
-        /// RETURN VALUES:
-        // A pointer to the cap timer.
-        //
-        static J_Timer* getCapTimer(void);
-
-        /// DESCRIPTION:
         // Get the current FPS cap.
         //
         /// RETURN VALUES:
@@ -132,8 +116,6 @@ class J_System
         static const std::string CONFIG_FILE;
         // The event handler.
         static SDL_Event event;
-        // The timers used for FPS elated calculations.
-        static J_Timer fpsTimer, capTimer;
         // The FPS cap for the system and the number of ticks per frame.
         static int fps, tpf;
         // The count for how many frames have passed.

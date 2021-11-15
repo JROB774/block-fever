@@ -1,4 +1,11 @@
-int main (int argc, char* argv[]) {
+extern "C" {
 
-    return 0;
+    void main_start () {
+
+    }
+
+    int main (int argc, char* argv[]) {
+
+        return 0;
+    }
 }
