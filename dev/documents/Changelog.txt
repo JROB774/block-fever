@@ -1,0 +1,8 @@
+Release v1.1.0 on ???, 2020
+---------------------------------------------------------
+- Debug console window no longer opens up when running the game.
+
+
+Release v1.0.0 on ???, 2015
+---------------------------------------------------------
+- Initial release!
