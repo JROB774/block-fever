@@ -13,6 +13,10 @@ J_SystemState J_System::state = J_SYSTEM_STATE_INACTIVE;
 
 void J_System::initialise (void) {
 
+    // Need to initialise error before any other sub-system.
+    J_Error::initialise();
+
+
     // Open the system data file to extract the data.
     std::ifstream systemFile(SYSTEM_FILE, std::ifstream::in);
 
@@ -35,13 +39,12 @@ void J_System::initialise (void) {
     // If the system is not resetting initialise all the SDL sub-systems.
     if (state != J_SYSTEM_STATE_RESETTING) {
 
-        if (SDL_Init(SDL_INIT_EVERYTHING) != 0) { J_Error::log("J_ERROR_SYSTEM_SDL_INIT"); }
+        if (SDL_Init(SDL_INIT_VIDEO) != 0) { J_Error::log("J_ERROR_SYSTEM_SDL_INIT"); }
         if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 2048) < 0) { J_Error::log("J_ERROR_SYSTEM_MIX_INIT"); }
     }
 
 
     // Initialise all the J-Engine sub-systems.
-    J_Error::initialise();
     J_Window::initialise();
     J_Renderer::initialise(J_Window::getWindow());
     J_Mixer::initialise();
