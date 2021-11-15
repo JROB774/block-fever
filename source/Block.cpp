@@ -78,7 +78,7 @@ void Block::step (void) {
 
         case (STATE_SICK) : {
 
-            if (corruptCounter <= 0) { if ((rand() % 39000) <= 2) { corruptCounter = (60 * 9.5); } }
+            if (corruptCounter <= 0) { if ((rand() % 39000) <= 2) { corruptCounter = (int)(60.0f * 9.5f); } }
             else {
 
                 --corruptCounter;

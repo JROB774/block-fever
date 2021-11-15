@@ -488,7 +488,7 @@ void Stage::step (void) {
                 }
                 else {
 
-                    convertToSickCounter = (rand() % MAX_CONVERT_TO_SICK_TIME + MIN_CONVERT_TO_SICK_TIME) - ((0.35 * (sickTotal + corruptTotal)) + (0.0003 * stageTime));
+                    convertToSickCounter = (int)((rand() % MAX_CONVERT_TO_SICK_TIME + MIN_CONVERT_TO_SICK_TIME) - ((0.35f * (sickTotal + corruptTotal)) + (0.0003f * stageTime)));
                     if (convertToSickCounter < 0 ) { convertToSickCounter = 0; }
                 }
             }
@@ -562,7 +562,7 @@ void Stage::step (void) {
             }
 
             // Reset the conversion counter.
-            convertToCorruptCounter = (rand() % MAX_CONVERT_TO_CORRUPT_TIME + MIN_CONVERT_TO_CORRUPT_TIME) - ((0.15 * (sickTotal + corruptTotal)) + (0.0003 * stageTime));
+            convertToCorruptCounter = (int)((rand() % MAX_CONVERT_TO_CORRUPT_TIME + MIN_CONVERT_TO_CORRUPT_TIME) - ((0.15f * (sickTotal + corruptTotal)) + (0.0003f * stageTime)));
             if (convertToCorruptCounter < 0 ) { convertToCorruptCounter = 0; }
         }
         else { --convertToCorruptCounter; }
@@ -820,31 +820,31 @@ void Stage::render (void) {
     if (money < IMMUNE_BLOCK_COST) { fontColour = { 232, 60, 60, 255, SDL_BLENDMODE_BLEND }; }
     else { fontColour = { 255, 255, 255, 255, SDL_BLENDMODE_BLEND }; }
     J_Renderer::setFontColour(&bigNumbers, fontColour);
-    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - ((data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 44, data.str());
+    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - (((int)data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 44, data.str());
     data.str("\0");
 
     data << healthyTotal;
     fontColour = { 107, 170, 175, 255, SDL_BLENDMODE_BLEND };
     J_Renderer::setFontColour(&bigNumbers, fontColour);
-    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - ((data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 124, data.str());
+    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - (((int)data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 124, data.str());
     data.str("\0");
 
     data << sickTotal;
     fontColour = { 107, 175, 107, 255, SDL_BLENDMODE_BLEND };
     J_Renderer::setFontColour(&bigNumbers, fontColour);
-    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - ((data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 188, data.str());
+    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - (((int)data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 188, data.str());
     data.str("\0");
 
     data << corruptTotal;
     fontColour = { 83, 204, 69, 255, SDL_BLENDMODE_BLEND };
     J_Renderer::setFontColour(&bigNumbers, fontColour);
-    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - ((data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 252, data.str());
+    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - (((int)data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 252, data.str());
     data.str("\0");
 
     data << immuneTotal;
     fontColour = { 150, 134, 133, 255, SDL_BLENDMODE_BLEND };
     J_Renderer::setFontColour(&bigNumbers, fontColour);
-    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - ((data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 316, data.str());
+    J_Renderer::renderFont(bigNumbers, ((BLOCK_ARRAY_WIDTH * Block::getWidth()) + 84) - (((int)data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), 316, data.str());
     data.str("\0");
 
     // Render the pause screen.

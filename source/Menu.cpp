@@ -2,8 +2,8 @@
 
 const int BigButton::WIDTH = 112, BigButton::HEIGHT = 112;
 const int BigButton::STARTING_Y = -1024, BigButton::ENDING_Y = (480 / 2) + (112 / 2);
-const float BigButton::VELOCITY_Y = 0.6;
-const float BigButton::TERMINAL_VELOCITY = 21.5;
+const float BigButton::VELOCITY_Y = 0.6f;
+const float BigButton::TERMINAL_VELOCITY = 21.5f;
 
 
 
@@ -92,7 +92,7 @@ void BigButton::step (void) {
             velY += VELOCITY_Y;
             if (velY > TERMINAL_VELOCITY) { velY = TERMINAL_VELOCITY; }
 
-            y += velY;
+            y += (int)velY;
             if (y > ENDING_Y) { y = ENDING_Y; }
             collider.quad.quad.y = y;
 
@@ -129,7 +129,7 @@ void BigButton::render (void) {
             case (TYPE_EXIT) : {
 
                 std::string text = "EXIT";
-                J_Renderer::renderFont(font, (640 / 2) - ((text.length() * J_Renderer::getFontCharWidth(font)) / 2), 420, text);
+                J_Renderer::renderFont(font, (640 / 2) - (((int)text.length() * J_Renderer::getFontCharWidth(font)) / 2), 420, text);
 
                 break;
             }
@@ -137,7 +137,7 @@ void BigButton::render (void) {
             case (TYPE_PLAY) : {
 
                 std::string text = "START THE GAME";
-                J_Renderer::renderFont(font, (640 / 2) - ((text.length() * J_Renderer::getFontCharWidth(font)) / 2), 420, text);
+                J_Renderer::renderFont(font, (640 / 2) - (((int)text.length() * J_Renderer::getFontCharWidth(font)) / 2), 420, text);
 
                 break;
             }
@@ -145,7 +145,7 @@ void BigButton::render (void) {
             case (TYPE_CONFIG) : {
 
                 std::string text = "OPTIONS";
-                J_Renderer::renderFont(font, (640 / 2) - ((text.length() * J_Renderer::getFontCharWidth(font)) / 2), 420, text);
+                J_Renderer::renderFont(font, (640 / 2) - (((int)text.length() * J_Renderer::getFontCharWidth(font)) / 2), 420, text);
 
                 break;
             }
@@ -153,7 +153,7 @@ void BigButton::render (void) {
             case (TYPE_HIGHSCORE) : {
 
                 std::string text = "HIGHSCORES";
-                J_Renderer::renderFont(font, (640 / 2) - ((text.length() * J_Renderer::getFontCharWidth(font)) / 2), 420, text);
+                J_Renderer::renderFont(font, (640 / 2) - (((int)text.length() * J_Renderer::getFontCharWidth(font)) / 2), 420, text);
 
                 break;
             }
@@ -425,9 +425,9 @@ J_Quad* Menu::Title::letter = nullptr;
 int* Menu::Title::letterY = nullptr;
 const int Menu::Title::LETTER_STARTING_Y = -480, Menu::Title::LETTER_ENDING_Y = 32;
 const int Menu::Title::LETTER_STARTING_Y_MAX_OFFSET = 640;
-float Menu::Title::letterVelY = 0.0;
-const float Menu::Title::LETTER_VELOCITY_Y = 0.2;
-const float Menu::Title::TERMINAL_VELOCITY = 21.5;
+float Menu::Title::letterVelY = 0.0f;
+const float Menu::Title::LETTER_VELOCITY_Y = 0.2f;
+const float Menu::Title::TERMINAL_VELOCITY = 21.5f;
 bool Menu::Title::landed = false;
 
 
@@ -478,7 +478,7 @@ void Menu::Title::step (void) {
                 letterVelY += LETTER_VELOCITY_Y;
                 if (letterVelY > TERMINAL_VELOCITY) { letterVelY = TERMINAL_VELOCITY; }
 
-                letterY[i] += letterVelY;
+                letterY[i] += (int)letterVelY;
                 if (letterY[i] > (J_Renderer::getImageHeight(image) / 2)) { letterY[i] = (J_Renderer::getImageHeight(image) / 2); }
 
                 landed = false;

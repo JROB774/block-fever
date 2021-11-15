@@ -228,7 +228,7 @@ void GameOver::render (void) {
         std::ostringstream data;
         data << currentBlocksSaved;
 
-        J_Renderer::renderFont(bigNumbers, (640 / 2) - ((data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), (480 / 2) + (112 / 2), data.str());
+        J_Renderer::renderFont(bigNumbers, (640 / 2) - (((int)data.str().length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2), (480 / 2) + (112 / 2), data.str());
     }
 
     // Render the best score text if this is the new best score.
@@ -242,7 +242,7 @@ void GameOver::render (void) {
 
                     std::string newBest = "NEW BEST";
 
-                    J_Renderer::renderFont(bigNumbers, (640 / 2) - ((newBest.length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2),
+                    J_Renderer::renderFont(bigNumbers, (640 / 2) - (((int)newBest.length() * J_Renderer::getFontCharWidth(bigNumbers)) / 2),
                                            (480 / 2) + ((112 / 2) + (J_Renderer::getFontCharHeight(bigNumbers))), newBest);
 
                     if (!bestHasPlayed) {
@@ -366,9 +366,9 @@ J_Animation GameOver::BigBlock::convert;
 J_Animation GameOver::BigBlock::healthy, GameOver::BigBlock::sick, GameOver::BigBlock::corrupt;
 int GameOver::BigBlock::y = 0;
 const int GameOver::BigBlock::STARTING_Y = -1024, GameOver::BigBlock::ENDING_Y = (480 / 2) - (112 / 2);
-float GameOver::BigBlock::velY = 0.0;
-const float GameOver::BigBlock::VELOCITY_Y = 0.6;
-const float GameOver::BigBlock::TERMINAL_VELOCITY = 21.5;
+float GameOver::BigBlock::velY = 0.0f;
+const float GameOver::BigBlock::VELOCITY_Y = 0.6f;
+const float GameOver::BigBlock::TERMINAL_VELOCITY = 21.5f;
 bool GameOver::BigBlock::landed = false;
 int GameOver::BigBlock::convertCounter = 0;
 
@@ -406,7 +406,7 @@ void GameOver::BigBlock::step (void) {
             velY += VELOCITY_Y;
             if (velY > TERMINAL_VELOCITY) { velY = TERMINAL_VELOCITY; }
 
-            y += velY;
+            y += (int)velY;
             if (y > ENDING_Y) { y = ENDING_Y; }
 
             landed = false;
@@ -489,9 +489,9 @@ J_Quad* GameOver::Title::letter = nullptr;
 int* GameOver::Title::letterY = nullptr;
 const int GameOver::Title::LETTER_STARTING_Y = -128, GameOver::Title::LETTER_ENDING_Y = 32;
 const int GameOver::Title::LETTER_STARTING_Y_MAX_OFFSET = 640;
-float GameOver::Title::letterVelY = 0.0;
-const float GameOver::Title::LETTER_VELOCITY_Y = 0.2;
-const float GameOver::Title::TERMINAL_VELOCITY = 21.5;
+float GameOver::Title::letterVelY = 0.0f;
+const float GameOver::Title::LETTER_VELOCITY_Y = 0.2f;
+const float GameOver::Title::TERMINAL_VELOCITY = 21.5f;
 bool GameOver::Title::landed = false;
 
 
@@ -542,7 +542,7 @@ void GameOver::Title::step (void) {
                 letterVelY += LETTER_VELOCITY_Y;
                 if (letterVelY > TERMINAL_VELOCITY) { letterVelY = TERMINAL_VELOCITY; }
 
-                letterY[i] += letterVelY;
+                letterY[i] += (int)letterVelY;
                 if (letterY[i] > (J_Renderer::getImageHeight(image) / 2)) { letterY[i] = (J_Renderer::getImageHeight(image) / 2); }
 
                 landed = false;

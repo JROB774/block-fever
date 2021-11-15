@@ -35,7 +35,7 @@ void J_Window::initialise (void) {
 
 
     // Find out the display information of the user's desktop and store the resolution.
-    SDL_DisplayMode display;
+    SDL_DisplayMode display = {};
     int numberOfDisplays = SDL_GetNumVideoDisplays();
 
     for (int i = 0; i < numberOfDisplays; ++i) {

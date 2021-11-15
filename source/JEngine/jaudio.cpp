@@ -92,7 +92,7 @@ void J_Mixer::setSoundVolume (const float arg_volume) {
     if (soundVolume > MIX_MAX_VOLUME) { soundVolume = MIX_MAX_VOLUME; }
     else if (soundVolume < 0.0) { soundVolume = 0.0; }
 
-    Mix_Volume(-1, soundVolume);
+    Mix_Volume(-1, (int)soundVolume);
 }
 
 void J_Mixer::toggleMute (void) {

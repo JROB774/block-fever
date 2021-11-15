@@ -2,7 +2,7 @@
 
 const int Button::WIDTH = 40, Button::HEIGHT = 40;
 const int Button::ENDING_Y = 480 - (86 + 15);
-const float Button::VELOCITY_Y = 0.6;
+const float Button::VELOCITY_Y = 0.6f;
 const float Button::TERMINAL_VELOCITY = 21.5;
 
 
@@ -74,7 +74,7 @@ void Button::step (void) {
             velY += VELOCITY_Y;
             if (velY > TERMINAL_VELOCITY) { velY = TERMINAL_VELOCITY; }
 
-            y -= velY;
+            y -= (int)velY;
             if (y < ENDING_Y) { y = ENDING_Y; }
             collider.quad.quad.y = y;
 
