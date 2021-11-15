@@ -112,8 +112,6 @@ class J_System
 
         // The system data file.
         static const std::string SYSTEM_FILE;
-        // The config data file.
-        static const std::string CONFIG_FILE;
         // The event handler.
         static SDL_Event event;
         // The FPS cap for the system and the number of ticks per frame.

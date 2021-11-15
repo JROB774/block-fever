@@ -1,7 +1,6 @@
 /// <J_SYSTEM> ////////////////////////////////////////////////////////////////
 
 const std::string J_System::SYSTEM_FILE = RES_DIR_DATA "System.dat";
-const std::string J_System::CONFIG_FILE = RES_DIR_DATA "Config.dat";
 SDL_Event J_System::event;
 int J_System::fps = 0, J_System::tpf = 0;
 int J_System::frameCount = 0;
@@ -48,33 +47,6 @@ void J_System::initialise (void) {
     J_Window::initialise();
     J_Renderer::initialise(J_Window::getWindow());
     J_Mixer::initialise();
-
-
-    // Open the config data file to extract the data.
-    std::ifstream configFile(CONFIG_FILE, std::ifstream::in);
-    std::string rawData = "\0";
-
-    if (configFile.is_open()) {
-
-        std::getline(configFile, rawData);
-        configFile.close();
-    }
-
-    std::istringstream data;
-    data.str(rawData);
-
-    bool configFullscreen = false;
-    int configScale = 0;
-    float configSoundVolume = 0.0;
-    bool configMuted = false;
-
-    data >> configFullscreen >> configScale >> configSoundVolume >> configMuted;
-
-
-    // Set some starting values stored in the config file.
-    if (configFullscreen && !J_Window::getFullscreen()) { J_Window::toggleFullscreen(); }
-    J_Mixer::setSoundVolume(configSoundVolume);
-    if (configMuted && !J_Mixer::isMuted()) { J_Mixer::toggleMute(); }
 
 
     // Set the system state to active.
