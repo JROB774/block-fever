@@ -35,6 +35,16 @@ class J_Window
         static void handle(const SDL_Event&, const bool);
 
         /// DESCRIPTION:
+        // Shows the window if it is currently hidden.
+        //
+        static void show();
+
+        /// DESCRIPTION:
+        // Hides the window if it is currently visible.
+        //
+        static void hide();
+
+        /// DESCRIPTION:
         // Set the screen scale to the specified value.
         //
         /// ARGUMENTS:

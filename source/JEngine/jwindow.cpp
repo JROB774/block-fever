@@ -52,7 +52,7 @@ void J_Window::initialise (void) {
     width = screenWidth * screenScale, height = screenHeight * screenScale;
 
     // The window itself is created using the informaation gathered from the data file.
-    window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+    window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE);
     if (window == nullptr) { J_Error::log("J_ERROR_WINDOW_CREATE"); }
 
 
@@ -97,6 +97,18 @@ void J_Window::handle (const SDL_Event& arg_event, const bool arg_debug) {
             }
         }
     }
+}
+
+
+
+void J_Window::show () {
+
+    SDL_ShowWindow(window);
+}
+
+void J_Window::hide () {
+
+    SDL_HideWindow(window);
 }
 
 

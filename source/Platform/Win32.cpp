@@ -5,6 +5,8 @@ int main (int argc, char* argv[]) {
         J_System::initialise();
         Game::initialise();
 
+        J_Window::show();
+
         Uint64 performanceFrequency = SDL_GetPerformanceFrequency();
         Uint64 lastCounter = SDL_GetPerformanceCounter();
         Uint64 endCounter = 0;

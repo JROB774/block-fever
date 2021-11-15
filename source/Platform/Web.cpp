@@ -42,6 +42,8 @@ void main_start_cpp () {
     J_System::initialise();
     Game::initialise();
 
+    J_Window::show();
+
     emscripten_set_main_loop(main_loop, -1, 1);
 }
 
