@@ -35,6 +35,11 @@ class J_Window
         static void handle(const SDL_Event&, const bool);
 
         /// DESCRIPTION:
+        // Update the window each frame.
+        //
+        static void step(void);
+
+        /// DESCRIPTION:
         // Shows the window if it is currently hidden.
         //
         static void show(void);
@@ -45,9 +50,26 @@ class J_Window
         static void hide(void);
 
         /// DESCRIPTION:
+        // Set whether the fullscreen is on or off.
+        //
+        /// ARGUMENTS:
+        // The fullscreen state.
+        //
+        static void setFullscreen(const bool);
+
+        /// DESCRIPTION:
         // Toggle whether fullscreen is on or off.
         //
         static void toggleFullscreen(void);
+
+        /// DESCRIPTION:
+        // Set the new width and height of the window.
+        //
+        /// ARGUMENTS:
+        // New width of height.
+        //
+        static void setWidth(int);
+        static void setHeight(int);
 
         /// DESCRIPTION:
         // Updates the scale of the screen.
@@ -66,13 +88,13 @@ class J_Window
         static void updateViewport(const int);
 
         /// DESCRIPTION:
-        // Get the window's dimensions.
+        // Get the screen's dimensions after being scaled within the window.
         //
         /// RETURN VALUES:
-        // The window's width or height.
+        // The screen's scaled width or height.
         //
-        static int getWidth(void);
-        static int getHeight(void);
+        static int getScreenWidthScaled(void);
+        static int getScreenHeightScaled(void);
 
         /// DESCRIPTION:
         // Get the screen's dimensions.
@@ -84,21 +106,13 @@ class J_Window
         static int getScreenHeight(void);
 
         /// DESCRIPTION:
-        // Get the desktop's dimensions.
+        // Get the window's dimensions (when in fullscreen it returns the size as if it were windowed).
         //
         /// RETURN VALUES:
-        // The desktop's width or height.
+        // The window's width or height.
         //
-        static int getDesktopWidth(void);
-        static int getDesktopHeight(void);
-
-        /// DESCRIPTION:
-        // Get the screen's render scale.
-        //
-        /// RETURN VALUES:
-        // The screen's render scale.
-        //
-        static int getScreenScale(void);
+        static int getWidth(void);
+        static int getHeight(void);
 
         /// DESCRIPTION:
         // Get the fullscreen flag.
@@ -133,14 +147,14 @@ class J_Window
         static const std::string WINDOW_FILE;
         // The window title.
         static std::string title;
+        // The window's start dimensions.
+        static int startWidth, startHeight;
         // The window's dimensions.
-        static int width, height;
+        static int cachedWidth, cachedHeight;
+        // The screen's scaled dimensions.
+        static int screenWidthScaled, screenHeightScaled;
         // The screen's dimensions.
         static int screenWidth, screenHeight;
-        // The desktop's dimensions.
-        static int desktopWidth, desktopHeight;
-        // The screen scale.
-        static int screenScale;
         // The fullscreen flag.
         static bool fullscreen;
         // The raw SDL window itself.

@@ -45,5 +45,5 @@ GAME_ERROR_PAUSE_BAR_ALLOCATE=Could not allocate enough memory for the pause scr
 GAME_ERROR_MENU_TITLE_ALLOCATE=Could not allocate enough memory for the menu title's letters!:0
 GAME_ERROR_MENU_TITLE_POSITION_ALLOCATE=Could not allocate enough memory for the menu title's letter positions!:0
 GAME_ERROR_PAUSE_BUTTON_ALLOCATE=Could not allocate enough memory for the pause buttons!:0
-GAME_ERROR_HIGHSCORE_FILE_OPEN=Could not open the highscore file for saving/loading/resetting!:0
-GAME_ERROR_WINDOW_SET_ICON=Could not set the window's icon.
+GAME_ERROR_LOAD=Could not open the save file for loading!:0
+GAME_ERROR_SAVE=Could not open the save file for saving!:0

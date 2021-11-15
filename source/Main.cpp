@@ -18,3 +18,4 @@
 #include "Menu.cpp"
 #include "Stage.cpp"
 #include "Platform.cpp"
+#include "Save.cpp"

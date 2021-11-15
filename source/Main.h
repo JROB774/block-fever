@@ -44,5 +44,6 @@
 #include "Menu.h"
 #include "Stage.h"
 #include "Platform.h"
+#include "Save.h"
 
 #endif // INCLUDE_MAIN

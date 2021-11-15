@@ -2,6 +2,8 @@
 
 void Game::initialise (void) {
 
+    Save::load();
+
     // Set a random seed based on the current time.
     srand(static_cast <unsigned int> (time(nullptr)));
 
@@ -107,6 +109,8 @@ void Game::step (void) {
             }
         }
     }
+
+    Save::step();
 }
 
 
@@ -131,6 +135,8 @@ void Game::render (void) {
 
 
 void Game::terminate (void) {
+
+    Save::save();
 
     // Terminate everything in the game.
     GameOver::terminate();
