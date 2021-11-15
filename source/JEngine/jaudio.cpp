@@ -40,10 +40,6 @@ void J_Mixer::handle (const SDL_Event& arg_event) {
 
         switch (arg_event.key.keysym.sym) {
 
-            case (SDLK_EQUALS) : { if (!muted) { setSoundVolume(soundVolume + volumePiece); } break; }
-
-            case (SDLK_MINUS) : { if (!muted) { setSoundVolume(soundVolume - volumePiece); } break; }
-
             case (SDLK_m) : { toggleMute(); break; }
         }
     }
