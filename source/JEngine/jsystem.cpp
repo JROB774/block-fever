@@ -73,7 +73,6 @@ void J_System::initialise (void) {
 
     // Set some starting values stored in the config file.
     if (configFullscreen && !J_Window::getFullscreen()) { J_Window::toggleFullscreen(); }
-    J_Window::setScreenScale(configScale);
     J_Mixer::setSoundVolume(configSoundVolume);
     if (configMuted && !J_Mixer::isMuted()) { J_Mixer::toggleMute(); }
 

@@ -37,26 +37,12 @@ class J_Window
         /// DESCRIPTION:
         // Shows the window if it is currently hidden.
         //
-        static void show();
+        static void show(void);
 
         /// DESCRIPTION:
         // Hides the window if it is currently visible.
         //
-        static void hide();
-
-        /// DESCRIPTION:
-        // Set the screen scale to the specified value.
-        //
-        /// ARGUMENTS:
-        // The new screen scale.
-        //
-        static void setScreenScale(const int);
-
-        /// DESCRIPTION:
-        // Either increase or decrease the screen's render scale.
-        //
-        // static void increaseScreenScale(void);
-        // static void decreaseScreenScale(void);
+        static void hide(void);
 
         /// DESCRIPTION:
         // Toggle whether fullscreen is on or off.
@@ -64,9 +50,20 @@ class J_Window
         static void toggleFullscreen(void);
 
         /// DESCRIPTION:
+        // Updates the scale of the screen.
+        //
+        /// ARGUMENTS:
+        // Whether to update the render scale and viewport or not.
+        //
+        static void updateScale(const bool);
+
+        /// DESCRIPTION:
         // Update the renderer's viewport
         //
-        static void updateViewport(void);
+        /// ARGUMENTS:
+        // The scale to adjust the viewport for.
+        //
+        static void updateViewport(const int);
 
         /// DESCRIPTION:
         // Get the window's dimensions.

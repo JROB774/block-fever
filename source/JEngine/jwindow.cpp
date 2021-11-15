@@ -17,6 +17,10 @@ void J_Window::initialise (void) {
     if (window != nullptr) { return; }
 
 
+    int startWidth = 640;
+    int startHeight = 480;
+
+
     // Open the window data file to extract data.
     std::ifstream windowFile(WINDOW_FILE, std::ifstream::in);
 
@@ -34,31 +38,17 @@ void J_Window::initialise (void) {
     else { J_Error::log("J_ERROR_WINDOW_FILE_READ"); }
 
 
-    // Find out the display information of the user's desktop and store the resolution.
-    SDL_DisplayMode display = {};
-    int numberOfDisplays = SDL_GetNumVideoDisplays();
-
-    for (int i = 0; i < numberOfDisplays; ++i) {
-
-        if (SDL_GetDesktopDisplayMode(i, &display) != 0) { continue; }
-        else { break; }
-    }
-
-    desktopWidth = display.w, desktopHeight = display.h;
-
-
-    // Set the window's starting dimensions and scale.
-    screenScale = 1;
-    width = screenWidth * screenScale, height = screenHeight * screenScale;
-
     // The window itself is created using the informaation gathered from the data file.
-    window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE);
+    window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, startWidth, startHeight, SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE);
     if (window == nullptr) { J_Error::log("J_ERROR_WINDOW_CREATE"); }
 
 
-    // Set the window's minimum size to the screen dimensions and its maximum size to the desktop's dimensions.
+    // Set the window's scale.
+    updateScale(false);
+
+
+    // Set the window's minimum size to the screen dimensions.
     SDL_SetWindowMinimumSize(window, screenWidth, screenHeight);
-    SDL_SetWindowMaximumSize(window, desktopWidth, desktopHeight);
 }
 
 
@@ -70,73 +60,29 @@ void J_Window::handle (const SDL_Event& arg_event, const bool arg_debug) {
 
         if (arg_event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED) {
 
-            width = arg_event.window.data1, height = arg_event.window.data2;
-
-            if (((screenWidth * screenScale) > width) || ((screenHeight * screenScale) > height)) {
-
-                width = screenWidth * screenScale, height = screenHeight * screenScale;
-                SDL_SetWindowSize(window, width, height);
-            }
-
-            updateViewport();
+            updateScale(true);
         }
     }
 
-    // Handle all window debug events.
-    if (arg_debug) {
+    if (arg_event.type == SDL_KEYDOWN) {
 
-        if (arg_event.type == SDL_KEYDOWN) {
+        switch (arg_event.key.keysym.sym) {
 
-            switch (arg_event.key.keysym.sym) {
-
-                case (SDLK_f) : { toggleFullscreen(); break; }
-
-                case (SDLK_0) : { setScreenScale(getScreenScale() + 1); break; }
-
-                case (SDLK_9) : { setScreenScale(getScreenScale() - 1); break; }
-            }
+            case (SDLK_f) : { toggleFullscreen(); break; }
         }
     }
 }
 
 
 
-void J_Window::show () {
+void J_Window::show (void) {
 
     SDL_ShowWindow(window);
 }
 
-void J_Window::hide () {
+void J_Window::hide (void) {
 
     SDL_HideWindow(window);
-}
-
-
-
-void J_Window::setScreenScale (const int arg_scale) {
-
-    // Set the new screen scale.
-    screenScale = arg_scale;
-
-    // Check to see if the new scale is out of bounds.
-    while (((screenWidth * screenScale) > desktopWidth) || ((screenHeight * screenScale) > desktopHeight)) { --screenScale; }
-    if (screenScale < 1) { screenScale = 1; }
-
-    // If the new scale is bigger than the current window size, increase it.
-    if (!fullscreen) {
-
-        if (((screenWidth * screenScale) > width) || ((screenHeight * screenScale) > height)) {
-
-            width = screenWidth * screenScale, height = screenHeight * screenScale;
-            SDL_SetWindowSize(window, width, height);
-        }
-    }
-
-    // Set the renderer scale.
-    J_Renderer::setScale(static_cast <float> (screenScale), static_cast <float> (screenScale));
-
-    // Update the viewport.
-    updateViewport();
 }
 
 
@@ -152,10 +98,40 @@ void J_Window::toggleFullscreen (void) {
 
 
 
-void J_Window::updateViewport (void) {
+void J_Window::updateScale (const bool arg_updateRenderScaleAndViewport) {
+
+    // Calculate the new screen scale based on the current window size.
+    int windowWidth, windowHeight;
+    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+
+    screenScale = 1;
+    while(((screenWidth * (screenScale+1)) <= windowWidth) && ((screenHeight * (screenScale+1)) <= windowHeight)) { screenScale++; }
+
+    int screenWidthScaled = screenWidth * screenScale;
+    int screenHeightScaled = screenHeight * screenScale;
+
+    // Set the renderer scale and viewport.
+    if(arg_updateRenderScaleAndViewport) {
+
+        J_Renderer::setScale(static_cast <float> (screenScale), static_cast <float> (screenScale));
+        updateViewport(screenScale);
+    }
+}
+
+void J_Window::updateViewport (const int arg_screenScale) {
+
+    int windowWidth, windowHeight;
+    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+
+    int screenWidthScaled = screenWidth * screenScale;
+    int screenHeightScaled = screenHeight * screenScale;
 
     J_Quad viewport;
-    viewport.quad = { ((J_Window::getWidth() / 2) - ((J_Window::getScreenWidth() * screenScale) / 2)) / screenScale, ((J_Window::getHeight() / 2) - ((J_Window::getScreenHeight() * screenScale) / 2)) / screenScale, J_Window::getScreenWidth(), J_Window::getScreenHeight() };
+    viewport.quad.x = ((windowWidth - screenWidthScaled) / 2) / arg_screenScale;
+    viewport.quad.y = ((windowHeight - screenHeightScaled) / 2) / arg_screenScale;
+    viewport.quad.w = screenWidth;
+    viewport.quad.h = screenHeight;
+
     J_Renderer::setViewport(viewport);
 }
 
