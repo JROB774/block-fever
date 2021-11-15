@@ -128,23 +128,28 @@ J_Image J_Renderer::createImage (const std::string arg_file) {
 
     J_Image image;
 
-    /*
-    // Load the PNG file into a surface.
     std::string directory = RES_DIR_IMAGES + arg_file + ".png";
-    SDL_Surface* surface = IMG_Load(directory.c_str());
-    if (surface == nullptr) { J_Error::log("J_ERROR_RENDERER_IMAGE_SURFACE_LOAD"); }
 
-    // Create the texture from a surface.
-    image.texture = SDL_CreateTextureFromSurface(renderer, surface);
-    if (image.texture == nullptr) { J_Error::log("J_ERROR_RENDERER_IMAGE_TEXTURE_CREATE"); }
+    // Load the image data from disk.
+    constexpr int BPP = 4; // We force the image to be in 32-bit RGBA format!
+    int w,h,bpp;
+    unsigned char* data = stbi_load(directory.c_str(), &w,&h,&bpp, BPP);
+    if (!data) { J_Error::log("J_ERROR_RENDERER_IMAGE_LOAD"); }
 
-    // Set the image's dimensions.
-    image.width = surface->w, image.height = surface->h;
+    // Create a surface from the raw pixel data.
+    int pitch = w*BPP;
+    SDL_Surface* surface = SDL_CreateRGBSurfaceWithFormatFrom((void*)data, w,h,BPP*8,pitch, SDL_PIXELFORMAT_RGBA32);
+    if (!surface) { J_Error::log("J_ERROR_RENDERER_IMAGE_SURFACE_LOAD"); }
 
-    // Free the temporary surface
+    // Convert the surface into a texture.
+    image.texture = SDL_CreateTextureFromSurface(J_Renderer::renderer, surface);
+    if (!image.texture) { J_Error::log("J_ERROR_RENDERER_IMAGE_TEXTURE_CREATE"); }
+
+    image.width = (int)w;
+    image.height = (int)h;
+
     SDL_FreeSurface(surface);
-    surface = nullptr;
-    */
+    stbi_image_free(data);
 
     // Return the image.
     return image;
