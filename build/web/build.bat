@@ -22,7 +22,7 @@ goto end
 
 :package
 pushd %OutputPath%
-set ZipName=%OutputName%.zip
+set ZipName=%OutputName%-v%Version%-Web.zip
 if exist %ZipName% rm %ZipName%
 tar -a -c --exclude=%OutputName%.html -f %ZipName% * -C ../../source/Platform/HTML/ index.html loading.png
 popd
