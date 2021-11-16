@@ -9,6 +9,8 @@ std::unordered_map <std::string, std::string> J_Error::error;
 
 void J_Error::initialise (void) {
 
+    #ifndef PLATFORM_WEB
+
     // If the error system is already initialised, end the process.
     if (!error.empty()) { return; }
 
@@ -73,11 +75,15 @@ void J_Error::initialise (void) {
     key = nullptr;
     delete[] content;
     content = nullptr;
+
+    #endif
 }
 
 
 
 void J_Error::log (const std::string arg_key) {
+
+    #ifndef PLATFORM_WEB
 
     // If the error system has not been initialised then exit with a failure state.
     if (error.empty()) { logError(); }
@@ -122,29 +128,43 @@ void J_Error::log (const std::string arg_key) {
     // Display an error message box and terminate with a failure state.
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "J-Engine Error", "An error has occured!\nCheck the 'Error.log' for more details.", J_Window::getWindow());
     exit(EXIT_FAILURE);
+
+    #endif
 }
 
 
 
 void J_Error::terminate (void) {
 
+    #ifndef PLATFORM_WEB
+
     // Reset all the error data.
     total = 0;
     if (!error.empty()) { error.clear(); }
+
+    #endif
 }
 
 
 
 inline void J_Error::initialiseError (void) {
 
+    #ifndef PLATFORM_WEB
+
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "J-Engine Error", "Could not initialise the J_Error sub-system!", J_Window::getWindow());
     exit(EXIT_FAILURE);
+
+    #endif
 }
 
 inline void J_Error::logError (void) {
 
+    #ifndef PLATFORM_WEB
+
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "J-Engine Error", "Could not log an error to the error log!", J_Window::getWindow());
     exit(EXIT_FAILURE);
+
+    #endif
 }
 
 /// </J_ERROR> ////////////////////////////////////////////////////////////////
