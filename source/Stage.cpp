@@ -367,7 +367,7 @@ void Stage::handle (void) {
 
                     case (SDLK_x) : {
 
-                        GameOver::setBestScore(Highscore::save(healthyTotal));
+                        GameOver::setBestScore(Highscore::addScore(healthyTotal));
                         GameOver::setBlocksSaved(healthyTotal);
                         state = STATE_INACTIVE;
                         break;
@@ -687,7 +687,7 @@ void Stage::step (void) {
 
         if (healthy <= 0) {
 
-            GameOver::setBestScore(Highscore::save(healthyTotal));
+            GameOver::setBestScore(Highscore::addScore(healthyTotal));
             GameOver::setBlocksSaved(healthyTotal);
             state = STATE_INACTIVE;
         }
@@ -755,7 +755,7 @@ void Stage::step (void) {
 
             if (healthy == originalHealthy) {
 
-                GameOver::setBestScore(Highscore::save(healthyTotal));
+                GameOver::setBestScore(Highscore::addScore(healthyTotal));
                 GameOver::setBlocksSaved(healthyTotal);
                 state = STATE_INACTIVE;
             }

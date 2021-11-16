@@ -1,24 +1,29 @@
-const std::string Highscore::HIGHSCORE_FILE = RES_DIR_DATA "Highscores.dat";
+int Highscore::highscore;
 
 
 
-bool Highscore::save (const int arg_score) {
+void Highscore::setScore (const int arg_highscore) {
 
-    // @INCOMPLETE: ...
-    return false;
+    highscore = arg_highscore;
+}
+
+int Highscore::getScore (void) {
+
+    return highscore;
 }
 
 
 
-std::string Highscore::load (void) {
+bool Highscore::addScore (const int arg_score) {
 
-    // @INCOMPLETE: ...
-    return "";
+    bool newBest = (arg_score > highscore);
+    if (newBest) { highscore = arg_score; }
+    return newBest;
 }
 
 
 
 void Highscore::reset (void) {
 
-    // @INCOMPLETE: ...
+    highscore = 0;
 }

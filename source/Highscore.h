@@ -19,20 +19,25 @@ class Highscore
         Highscore& operator=(Highscore&&) = delete;
 
         /// DESCRIPTION:
+        // Set the highscore value.
+        //
+        static void setScore(const int);
+
+        // DESCRIPTION:
+        // Get the highscore value.
+        //
+        static int getScore(void);
+
+        /// DESCRIPTION:
         // Save the highscore to the file.
         //
         /// RETURN VALUES:
-        // True if this is the new best score.
-        // False if it is not.
-        static bool save(const int);
-
-        /// DESCRIPTION:
-        // Load the highscores from the file.
+        // True if this is the new best score, false if not.
         //
-        static std::string load(void);
+        static bool addScore(const int);
 
         /// DESCRIPTION:
-        // Reset the saved highscores.
+        // Reset the saved highscore.
         //
         static void reset(void);
 
@@ -43,8 +48,7 @@ class Highscore
 
     private:
 
-        // The highscore save file.
-        static const std::string HIGHSCORE_FILE;
+        static int highscore;
 };
 
 #endif // INCLUDE_HIGHSCORE
