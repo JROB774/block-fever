@@ -30,7 +30,7 @@ set InputResource=resource\resources.res
 set InputSource=source\Main.cpp
 
 set OutputPath=binary\win32\
-set OutputName=BLOCK
+set OutputName=BlockFever
 
 set OutputExecutable=%OutputPath%%OutputName%
 

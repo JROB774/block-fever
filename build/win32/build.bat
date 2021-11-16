@@ -46,15 +46,23 @@ if exist %OutputPath%\Resources\ (
 )
 xcopy assets %OutputPath%\Resources\ /E
 
-if %BuildMode%==final goto package
+if %BuildMode%==final goto documents
 
 goto end
+
+:documents
+if exist %OutputPath%\Manual\ (
+    rmdir /s /q %OutputPath%\Manual\
+)
+xcopy dev\documents\Manual %OutputPath%\Manual\ /E
+copy dev\documents\Manual.html %OutputPath%
+copy dev\documents\Changes.txt %OutputPath%
 
 :package
 pushd %OutputPath%
 set ZipName=%OutputName%.zip
 if exist %ZipName% rm %ZipName%
-tar -a -c --exclude=save.dat --exclude=*.log --exclude=*.pdb --transform 's,^,RUNNER/,' -f %ZipName% *
+tar -a -c --exclude=save.dat --exclude=*.log --exclude=*.pdb --transform 's,^,%OutputName%/,' -f %ZipName% *
 popd
 
 goto end
