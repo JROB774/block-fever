@@ -61,10 +61,19 @@ void GameOver::initialise (void) {
     button = new(std::nothrow) Button[Button::TYPE_TOTAL];
     if (button == nullptr) { J_Error::log("GAME_ERROR_GAME_OVER_BUTTON_ALLOCATE"); }
 
+    // We don't want exit button on the web build.
+    #ifdef PLATFORM_WEB
+    button[Button::TYPE_QUIT].create(9999, 9999, Button::TYPE_QUIT); // Off-screen!
+    for (int i = 1, ix = ((640 / 2) + 5); i < Button::TYPE_TOTAL; ++i, ix -= (Button::getWidth() + 10)) {
+
+        button[i].create(ix, 480 + 256, i);
+    }
+    #else
     for (int i = 0, ix = (((640 / 2) + Button::getWidth()) - 10); i < Button::TYPE_TOTAL; ++i, ix -= (Button::getWidth() + 10)) {
 
         button[i].create(ix, 480 + 256, i);
     }
+    #endif
 
     // Set the counter to wait before the buttons move in.
     buttonsCounter = 60;

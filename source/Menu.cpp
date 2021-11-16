@@ -241,8 +241,14 @@ void Menu::initialise (void) {
     button = new(std::nothrow) BigButton[2];
     if (button == nullptr) { J_Error::log("GAME_ERROR_GAME_OVER_BUTTON_ALLOCATE"); }
 
+    // We don't want exit button on the web build.
+    #ifdef PLATFORM_WEB
+    button[0].create(9999, BigButton::TYPE_EXIT); // Off-screen!
+    button[1].create((640 / 2) - (BigButton::getWidth() / 2), BigButton::TYPE_PLAY);
+    #else
     button[0].create((640 / 2) - BigButton::getWidth(), BigButton::TYPE_EXIT);
     button[1].create((640 / 2), BigButton::TYPE_PLAY);
+    #endif
 
     // Set the foreground darkness fade.
     fade.quad = { 0, 0, 640, 480 };

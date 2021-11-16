@@ -32,8 +32,14 @@ void Pause::initalise (void) {
     button = new(std::nothrow) Button[2];
     if (button == nullptr) { J_Error::log("GAME_ERROR_PAUSE_BUTTON_ALLOCATE"); }
 
+    // We don't want exit button on the web build.
+    #ifdef PLATFORM_WEB
+    button[0].create(((640 / 2) - (Button::getWidth() / 2)) - 5, 480 - (86 + 15), Button::TYPE_MENU);
+    button[1].create(9999, 9999, Button::TYPE_QUIT); // Off-screen!
+    #else
     button[0].create(((640 / 2) - Button::getWidth()) - 5, 480 - (86 + 15), Button::TYPE_MENU);
     button[1].create((640 / 2) + 5, 480 - (86 + 15), Button::TYPE_QUIT);
+    #endif
 
     // Set the state.
     state = STATE_ACTIVE;
