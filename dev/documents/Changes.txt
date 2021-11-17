@@ -1,7 +1,9 @@
-Release v1.1.0 on ???, 2021
+Release v1.1.0 on November 18th, 2021
 ---------------------------------------------------------
 - Debug console window no longer opens up when running the game.
 - Screen content now automatically resizes based on window size.
+- Toggle fullscreen with F.
+- Toggle fullscreen with Alt+Enter or F11 (Windows).
 
 
 Release v1.0.0 on July 30th, 2015
