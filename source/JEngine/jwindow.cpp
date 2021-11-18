@@ -60,6 +60,8 @@ void J_Window::handle (const SDL_Event& arg_event, const bool arg_debug) {
         }
     }
 
+    // Don't allow fullscreen in web builds as it just causes issues and I can't be bothered to fix it in this old game.
+    #ifndef PLATFORM_WEB
     if (arg_event.type == SDL_KEYDOWN) {
 
         switch (arg_event.key.keysym.sym) {
@@ -67,6 +69,7 @@ void J_Window::handle (const SDL_Event& arg_event, const bool arg_debug) {
             case (SDLK_f) : { toggleFullscreen(); break; }
         }
     }
+    #endif
 }
 
 

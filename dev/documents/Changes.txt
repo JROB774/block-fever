@@ -1,3 +1,8 @@
+Release v1.2.0 on Novekber 19th, 2021
+---------------------------------------------------------
+- Removed broken fullscreen from the web build of the game.
+
+
 Release v1.1.0 on November 18th, 2021
 ---------------------------------------------------------
 - Debug console window no longer opens up when running the game.

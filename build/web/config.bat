@@ -18,4 +18,4 @@ set OutputName=BlockFever
 
 set OutputExecutable=%OutputPath%%OutputName%
 
-set Version=1.1.0
+set Version=1.2.0
