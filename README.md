@@ -1,4 +1,4 @@
-# Runner
+# Block Fever
 
 This project was my second completed game, made back in 2015. It's a simple
 game where you must contain a spreading infection whilst preventing as many
@@ -51,4 +51,4 @@ file and change the `emsdk_location` variable.
 ## License
 
 The project's code is available under the
-**[MIT License](https://github.com/JROB774/lala/blob/master/LICENSE)**.
+**[MIT License](https://github.com/JROB774/block-fever/blob/master/LICENSE)**.
